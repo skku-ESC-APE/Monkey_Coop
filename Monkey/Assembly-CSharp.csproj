@@ -66,19 +66,22 @@
     <Compile Include="Assets\Scripts\Scale\MaxMinY.cs" />
     <Compile Include="Assets\Scripts\Scale\Compare.cs" />
     <Compile Include="Assets\Scripts\Scale\TrashFood.cs" />
+    <Compile Include="Assets\Scripts\KeypadController.cs" />
     <Compile Include="Assets\Scripts\InfoPanelController.cs" />
     <Compile Include="Assets\Scripts\Scale\ObjDrag.cs" />
     <Compile Include="Assets\Scripts\Scale\MaxVelocity.cs" />
     <Compile Include="Assets\Scripts\StartSceneManager.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Scale\HandWeight.cs" />
-    <Compile Include="Assets\Scripts\Scale\ReturnButton.cs" />
     <Compile Include="Assets\Scripts\InfoInteract.cs" />
     <Compile Include="Assets\Scripts\Scale\FIxPOS.cs" />
+    <Compile Include="Assets\Scripts\DraggerManager.cs" />
     <Compile Include="Assets\Scripts\FadeManager.cs" />
     <Compile Include="Assets\Scripts\Scale\FillFood.cs" />
+    <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Dialogue\DialogueComponent.cs" />
     <Compile Include="Assets\Scripts\Dialogue\DialogueContainer.cs" />
+    <Compile Include="Assets\Scripts\Dragger.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
