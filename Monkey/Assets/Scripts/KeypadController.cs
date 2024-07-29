@@ -1,57 +1,83 @@
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.UI; // Button í´ë˜ìŠ¤ë¥¼ ì‚¬ìš©í•˜ê¸° ìœ„í•œ ë„¤ì„ìŠ¤í˜ì´ìŠ¤
 using TMPro;
 
 public class KeypadController : MonoBehaviour
 {
-    public TextMeshProUGUI inputField; // TextMeshPro·Î º¯°æ
-    public string correctAnswer = "6971"; // Á¤´ä
+    public TextMeshProUGUI[] digitFields; // ê° ìë¦¿ìˆ˜ë³„ TextMeshProUGUI í…ìŠ¤íŠ¸
+    public TextMeshProUGUI inputField; // TextMeshProUGUI í…ìŠ¤íŠ¸
+    public string correctAnswer = "56971"; // ì •ë‹µ
 
     private string currentInput = "";
 
     void Start()
     {
-        // °¢ ¹öÆ°¿¡ ÀÌº¥Æ® ¸®½º³Ê¸¦ Ãß°¡ÇÕ´Ï´Ù.
+        // ê° ë²„íŠ¼ì˜ ì´ë²¤íŠ¸ í•¸ë“¤ëŸ¬ë¥¼ ì¶”ê°€í•©ë‹ˆë‹¤.
         for (int i = 0; i <= 9; i++)
         {
             string number = i.ToString();
             GameObject button = GameObject.Find("Button" + number);
-            button.GetComponent<Button>().onClick.AddListener(() => OnNumberButtonClicked(number));
+            if (button != null)
+            {
+                button.GetComponent<Button>().onClick.AddListener(() => OnNumberButtonClicked(number));
+            }
         }
 
-        // Clear ¹öÆ°¿¡ ÀÌº¥Æ® ¸®½º³Ê¸¦ Ãß°¡ÇÕ´Ï´Ù.
+        // Clear ë²„íŠ¼ ì´ë²¤íŠ¸ í•¸ë“¤ëŸ¬ë¥¼ ì¶”ê°€í•©ë‹ˆë‹¤.
         GameObject clearButton = GameObject.Find("ClearButton");
-        clearButton.GetComponent<Button>().onClick.AddListener(ClearInput);
+        if (clearButton != null)
+        {
+            clearButton.GetComponent<Button>().onClick.AddListener(ClearInput);
+        }
 
-        // Enter ¹öÆ°¿¡ ÀÌº¥Æ® ¸®½º³Ê¸¦ Ãß°¡ÇÕ´Ï´Ù.
+        // Enter ë²„íŠ¼ ì´ë²¤íŠ¸ í•¸ë“¤ëŸ¬ë¥¼ ì¶”ê°€í•©ë‹ˆë‹¤.
         GameObject enterButton = GameObject.Find("EnterButton");
-        enterButton.GetComponent<Button>().onClick.AddListener(CheckInput);
+        if (enterButton != null)
+        {
+            enterButton.GetComponent<Button>().onClick.AddListener(CheckInput);
+        }
     }
 
     void OnNumberButtonClicked(string number)
     {
-        if (currentInput.Length < 4) // ÃÖ´ë 4ÀÚ¸® ¼ıÀÚ¸¸ ÀÔ·Â¹ŞÀ½
+        if (currentInput.Length < 5) // ìµœëŒ€ 5ìë¦¬ ìˆ«ìë§Œ ì…ë ¥
         {
             currentInput += number;
-            inputField.text = currentInput;
+            UpdateDigitFields();
         }
     }
 
     public void ClearInput()
     {
         currentInput = "";
-        inputField.text = currentInput;
+        UpdateDigitFields();
     }
 
     public void CheckInput()
     {
         if (currentInput == correctAnswer)
         {
-            Debug.Log("Correct!");
+            UnityEngine.Debug.Log("Correct!"); // UnityEngine.Debug ì‚¬ìš©
         }
         else
         {
-            Debug.Log("Incorrect!");
+            UnityEngine.Debug.Log("Incorrect!"); // UnityEngine.Debug ì‚¬ìš©
+        }
+    }
+
+    private void UpdateDigitFields()
+    {
+        // ê³ ì •ëœ ìœ„ì¹˜ì—ì„œ ìˆ«ìë¥¼ í‘œì‹œí•©ë‹ˆë‹¤.
+        for (int i = 0; i < digitFields.Length; i++)
+        {
+            if (i < currentInput.Length)
+            {
+                digitFields[i].text = currentInput[i].ToString();
+            }
+            else
+            {
+                digitFields[i].text = "";
+            }
         }
     }
 }
