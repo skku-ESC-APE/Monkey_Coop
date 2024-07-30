@@ -73,6 +73,7 @@
     <Compile Include="Assets\Scripts\Scale\ObjDrag.cs" />
     <Compile Include="Assets\Scripts\Scale\MaxVelocity.cs" />
     <Compile Include="Assets\Scripts\StartSceneManager.cs" />
+    <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Scale\HandWeight.cs" />
     <Compile Include="Assets\Quirky Series Ultimate\_Scripts\QuirkySeriesDemo.cs" />
     <Compile Include="Assets\Scripts\InfoInteract.cs" />

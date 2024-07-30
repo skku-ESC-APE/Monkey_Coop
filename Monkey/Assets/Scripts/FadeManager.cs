@@ -3,15 +3,13 @@ using UnityEngine.SceneManagement;
 
 /// <summary>
 /// FadeManager 클래스는 씬 전환 시 페이드 인/아웃 효과를 관리합니다.
-/// 이 클래스는 DialogueManager와 상호작용하여 대화 시작 전후에 페이드 효과를 적용합니다.
+/// 이 클래스는 DialogueManager와 상호작용하여 대화가 끝난 후 씬 전환 효과를 처리합니다.
 /// </summary>
 public class FadeManager : MonoBehaviour
 {
     [SerializeField] private Animator fadeAnimator;
     [SerializeField] private DialogueManager dialogueManager;
     [SerializeField] private bool isStartScene = false;
-    [SerializeField] private bool isForestScene = false;
-    [SerializeField] private Sprite playerSprite;
     [SerializeField] private DialogueComponent dialogueComponent;
     private bool isFading = false;
     private string sceneToLoad;
@@ -30,23 +28,18 @@ public class FadeManager : MonoBehaviour
         {
             Debug.LogError("Fade Animator is not assigned.");
         }
-
-        if (isForestScene && dialogueManager != null)
-        {
-            dialogueManager.PrepareDialogue(playerSprite, dialogueComponent);
-        }
     }
 
     private void Update()
     {
         if (isStartScene && Input.GetKeyDown(KeyCode.Return) && !isFading)
         {
-            LoadSceneWithFade("ForestScene");
+            LoadSceneWithFade("GameScene");
         }
     }
 
     /// <summary>
-    /// 페이드 아웃 효과와 함께 씬을 로드합니다.
+    /// 씬 전환 효과와 함께 씬을 로드합니다.
     /// </summary>
     /// <param name="sceneName">로드할 씬 이름</param>
     public void LoadSceneWithFade(string sceneName)
@@ -72,9 +65,9 @@ public class FadeManager : MonoBehaviour
     public void OnFadeInComplete()
     {
         Debug.Log("Fade In Complete");
-        if (isForestScene && dialogueManager != null)
+        if (dialogueManager != null && dialogueComponent != null)
         {
-            dialogueManager.StartDialogue(playerSprite, dialogueComponent);
+            dialogueManager.StartDialogue(dialogueComponent); // 인덱스 0을 사용하여 대화 시작
         }
     }
 

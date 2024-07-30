@@ -8,7 +8,7 @@ public class StartSceneManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            fadeManager.LoadSceneWithFade("ForestScene");
+            fadeManager.LoadSceneWithFade("GameScene");
         }
     }
 }

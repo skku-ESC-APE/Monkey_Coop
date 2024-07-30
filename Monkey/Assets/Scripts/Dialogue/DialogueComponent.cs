@@ -1,30 +1,73 @@
 using UnityEngine;
 using System.Collections.Generic;
-
-
-/// DialogueComponent 클래스는 특정 스프라이트와 대응하는 대화 컨테이너 관리
-/// DialogueManager와 상호작용하여 플레이어의 스프라이트에 따라 알맞는 대화 컨테이너 제공
-
-[System.Serializable]
-public class DialogueCondition
-{
-    public Sprite sprite; // 비교할 스프라이트
-    public DialogueContainer container; // 스프라이트와 매핑된 대화 컨테이너
-}
+using Unity.VisualScripting;
 
 public class DialogueComponent : MonoBehaviour
 {
-    public List<DialogueCondition> dialogueConditions; // 스프라이트와 대화 컨테이너의 리스트
+    private int index = 0;
+    GameManager GM;
+    DialogueManager DM;
+    public List<DialogueContainer> dialogueContainers; // 대화 컨테이너 리스트
 
-    public DialogueContainer GetContainerForSprite(Sprite playerSprite)
+    private void Start()
     {
-        foreach (var condition in dialogueConditions)
+        GM = GameObject.Find("GameManager").GetComponent<GameManager>();
+        DM = GameObject.Find("DialogueManager").GetComponent<DialogueManager>();
+    }
+    public DialogueContainer GetContainer()
+    {
+        if (this.gameObject.name == "bookshelf")
         {
-            if (condition.sprite == playerSprite)
+            if (GM.amugena)
             {
-                return condition.container;
+                return dialogueContainers[1];
+            }
+            else
+            {
+                return dialogueContainers[0];
             }
         }
+
+        if (this.gameObject.name == "vent")
+        {
+            if (GM.amugena)
+            {
+                return dialogueContainers[1];
+            }
+            else
+            {
+                return dialogueContainers[0];
+            }
+        }
+
+        if (this.gameObject.name == "door")
+        {
+            if (GM.amugena)
+            {
+                return dialogueContainers[1];
+            }
+            else
+            {
+                return dialogueContainers[0];
+            }
+        }
+
+        if (this.gameObject.name == "bookshelf")
+        {
+            if (GM.amugena)
+            {
+                return dialogueContainers[1];
+            }
+            else
+            {
+                return dialogueContainers[0];
+            }
+        }
+
         return null;
     }
+
+
+
+
 }
