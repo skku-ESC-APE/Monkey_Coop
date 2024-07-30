@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b25dc03589381946937c20fd126db42, type: 3}
+  m_Name: Snake_First
+  m_EditorClassIdentifier: 
+  lines:
+  - {fileID: 11400000, guid: 178cd22313f96ed48a40bf03dbaa8e35, type: 2}
+  - {fileID: 11400000, guid: c55dc9b77cd8d58448a72234e1d72e4b, type: 2}
+  - {fileID: 11400000, guid: 823db75cdf1aa15488ecc6e421d98465, type: 2}
+  - {fileID: 11400000, guid: 2d2e427d59c79d441805b246521b7380, type: 2}
+  - {fileID: 11400000, guid: c83bd357f89293348978f40f0c22a1b7, type: 2}
+  - {fileID: 11400000, guid: d468bede80e2a0a4e85abc6258010466, type: 2}
+  - {fileID: 11400000, guid: b6011b19acb59b94cbcf0f834f1a36f6, type: 2}
+  - {fileID: 11400000, guid: fc79d694787f81a4a984f873e563d5fe, type: 2}
+  - {fileID: 11400000, guid: 6a2e29c1ec927324dbbb556cf2462088, type: 2}
+  - {fileID: 11400000, guid: acbfc6b2853cb07468f36f3668fc147f, type: 2}
+  - {fileID: 11400000, guid: 8691d9d113881e546aa280c14c1e395b, type: 2}

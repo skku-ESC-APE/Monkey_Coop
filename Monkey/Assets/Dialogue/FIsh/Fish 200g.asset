@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b25dc03589381946937c20fd126db42, type: 3}
+  m_Name: Fish 200g
+  m_EditorClassIdentifier: 
+  lines:
+  - {fileID: 11400000, guid: 847b43523ea30ff4890b8b9dc8464f17, type: 2}
+  - {fileID: 11400000, guid: fe7d418cde9aae74daba26bc4e1ab0a9, type: 2}
+  - {fileID: 11400000, guid: 5b43a96176927b94dabef3e44717765e, type: 2}
+  - {fileID: 11400000, guid: 8d024cd599382174294267763d745a1f, type: 2}
+  - {fileID: 11400000, guid: 783b7fd1af3f9734a92fdc8fdbd3669b, type: 2}
+  - {fileID: 11400000, guid: 9bc60ec0e863a154aa082081f4f977df, type: 2}
+  - {fileID: 11400000, guid: bd521c53c6674b542be61149a10b0aca, type: 2}
+  - {fileID: 11400000, guid: 8baa081153b4fd24b93cd221d10d50f2, type: 2}
+  - {fileID: 11400000, guid: 3d7e9980dcb339f4bbfe9aeb1e2aa30a, type: 2}
+  - {fileID: 11400000, guid: 4a2ade224360b6c4793f0dd65de61de6, type: 2}
+  - {fileID: 11400000, guid: 5fe47a0e4f9a37e45ab41105d11a4577, type: 2}
+  - {fileID: 11400000, guid: 04d4faf44b1b54845bd311ff99518249, type: 2}
+  - {fileID: 11400000, guid: 71330a8d550ec2446809287350f8efef, type: 2}
+  - {fileID: 11400000, guid: b5c7f7c0ff2268a4e901585b4d642079, type: 2}
+  - {fileID: 11400000, guid: 0daa5a49c98b17e428128db657590afe, type: 2}
+  - {fileID: 11400000, guid: 39c5d6cac6591fb4ca66d0b8f5c1cc19, type: 2}
+  - {fileID: 11400000, guid: 253e7409880d5004b9945cb636d6e0c5, type: 2}
+  - {fileID: 11400000, guid: bf4acc1e99e5b39439c101d387af3ce4, type: 2}
+  - {fileID: 11400000, guid: 4487fdb6e686c8a46ac8906e61a47c5b, type: 2}
+  - {fileID: 11400000, guid: 8d19fcba9f9152340bc02836699e53a8, type: 2}
+  - {fileID: 11400000, guid: 9e87b91b45745e34bb53d71f7b7ba3a8, type: 2}

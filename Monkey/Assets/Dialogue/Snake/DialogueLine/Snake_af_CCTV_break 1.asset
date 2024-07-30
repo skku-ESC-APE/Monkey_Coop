@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82106ef5c47a1294b8cdafa36fd80809, type: 3}
+  m_Name: Snake_af_CCTV_break 1
+  m_EditorClassIdentifier: 
+  characterName: Snake
+  text: "\uD760.. \uC815\uB9D0 \uB9C8\uB140\uC758 \uD3B8\uC740 \uC544\uB2C8\uC5C8\uB098\uBCF4\uB124."
+  characterImage1: {fileID: 0}
+  characterImage2: {fileID: 0}

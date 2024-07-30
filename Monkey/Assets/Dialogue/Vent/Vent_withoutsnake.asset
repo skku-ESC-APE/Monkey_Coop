@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b25dc03589381946937c20fd126db42, type: 3}
+  m_Name: Vent_withoutsnake
+  m_EditorClassIdentifier: 
+  lines:
+  - {fileID: 11400000, guid: e9785f71161c1b24c9bfcfb68ba1b4c1, type: 2}
