@@ -10,10 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 82106ef5c47a1294b8cdafa36fd80809, type: 3}
-  m_Name: CCTV_bf_1break 5
+  m_Name: CCTV_bf_break2_hammerwrench 7
   m_EditorClassIdentifier: 
   characterName: Player
-  text: "(\uD070 \uC18C\uB9AC\uB97C \uB0C8\uB2E4\uAC00\uB294 \uB9C8\uB140\uAC00 \uAE08\uBC29
-    \uB0B4\uB824\uC62C\uC9C0\uB3C4 \uBAB0\uB77C..)"
+  text: "\uC5ED\uC2DC \uBC15\uC0B4\uB0BC \uB54C\uB294 \uB9DD\uCE58\uACA0\uC9C0?"
   characterImage1: {fileID: 0}
   characterImage2: {fileID: 0}

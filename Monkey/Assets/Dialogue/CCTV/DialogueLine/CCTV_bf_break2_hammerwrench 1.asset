@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: CCTV_bf_break2_hammerwrench 1
   m_EditorClassIdentifier: 
   characterName: Player
-  text: "\uC5ED\uC2DC \uBC15\uC0B4\uB0BC \uB54C\uB294 \uB9DD\uCE58/\uB80C\uCE58\uACA0\uC9C0?"
+  text: "\uC5ED\uC2DC \uBC15\uC0B4\uB0BC \uB54C\uB294 \uB80C\uCE58\uACA0\uC9C0?"
   characterImage1: {fileID: 0}
   characterImage2: {fileID: 0}

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82106ef5c47a1294b8cdafa36fd80809, type: 3}
   m_Name: CCTV_bf_1break 2
   m_EditorClassIdentifier: 
-  characterName: Naration
-  text: "* \uCF85!! *"
+  characterName: Player
+  text: "\uC5ED\uC2DC \uBC15\uC0B4\uB0BC \uB54C\uB294 \uB80C\uCE58\uACA0\uC9C0?"
   characterImage1: {fileID: 0}
   characterImage2: {fileID: 0}
