@@ -12,11 +12,15 @@ public class PlayerController : MonoBehaviour
 
     // 크기 조정 변수
     public Vector3 monkeyScale = new Vector3(1f, 1f, 1f);
-    public Vector3 snakeScale = new Vector3(2f, 0.1f, 1f);
+    public Vector3 snakeScale = new Vector3(1f, 1f, 1f);
 
     void Start()
     {
-        TransformToMonkey(); // 초기 상태는 원숭이
+        // 게임 시작 시 원숭이로 변신하며 초기 위치 설정
+        TransformToMonkey();
+        // 플레이어 위치를 화면의 중앙으로 조정 (필요에 따라 수정 가능)
+        currentAnimal.transform.position = new Vector3(0, -5f, 0);
+        currentAnimal.transform.rotation = Quaternion.Euler(0, 180, 0);
     }
 
     void Update()
@@ -63,20 +67,22 @@ public class PlayerController : MonoBehaviour
 
     void TransformToMonkey()
     {
+        Vector3 currentPosition = currentAnimal != null ? currentAnimal.transform.position : new Vector3(0, 2.51f, 0);
         if (currentAnimal != null) Destroy(currentAnimal);
-        currentAnimal = Instantiate(monkeyPrefab, transform.position, Quaternion.identity);
+        currentAnimal = Instantiate(monkeyPrefab, currentPosition, Quaternion.identity);
         currentAnimal.transform.localScale = monkeyScale; // 원숭이 크기 조정
-        currentAnimal.transform.position = new Vector3(transform.position.x, 2.0f, transform.position.z); // 원숭이 높이 설정
+        currentAnimal.transform.position = new Vector3(currentPosition.x, -5f, currentPosition.z); // 원숭이 높이 설정
         animator = currentAnimal.GetComponent<Animator>();
         ResetAnimatorParameters();
     }
 
     void TransformToSnake()
     {
+        Vector3 currentPosition = currentAnimal != null ? currentAnimal.transform.position : new Vector3(0, 2.0f, 0);
         if (currentAnimal != null) Destroy(currentAnimal);
-        currentAnimal = Instantiate(snakePrefab, transform.position, Quaternion.identity);
+        currentAnimal = Instantiate(snakePrefab, currentPosition, Quaternion.identity);
         currentAnimal.transform.localScale = snakeScale; // 뱀 크기 조정
-        currentAnimal.transform.position = new Vector3(transform.position.x, 1.0f, transform.position.z); // 뱀 높이 설정
+        currentAnimal.transform.position = new Vector3(currentPosition.x, -6.5f, currentPosition.z); // 뱀 높이 설정
         animator = currentAnimal.GetComponent<Animator>();
         ResetAnimatorParameters();
     }
