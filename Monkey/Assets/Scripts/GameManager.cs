@@ -5,6 +5,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public bool amugena = false;
+    public bool SnakeMetamorphose = false;
+    
     public GameObject Player;
     public SpriteRenderer PlayerSpriteRenderer;
     

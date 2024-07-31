@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         TransformToMonkey(); // 초기 상태는 원숭이
-        transform.position = new Vector3(0, 2.5f, 0); // 게임 시작 시 위치 초기화(직접 지정해두셈ㅇㅇ)
+        transform.position = new Vector3(0, 2.5f, -5); // 게임 시작 시 위치 초기화(직접 지정해두셈ㅇㅇ)
     }
 
     void Update()

@@ -11,9 +11,11 @@ public class TalkInteract : MonoBehaviour
     [SerializeField] private DialogueComponent dialogueComponent; // DialogueComponent를 참조하여 대화 데이터를 가져옴
     private DialogueManager dialogueManager;
     private bool isPlayerInRange = false;
+    DialogueComponent DC;
 
     private void Start()
     {
+        DC = GetComponent<DialogueComponent>();
         dialogueManager = FindObjectOfType<DialogueManager>();
         if (dialogueManager == null)
         {
@@ -28,18 +30,39 @@ public class TalkInteract : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(GameObject.FindWithTag("Player").transform.GetChild(0).name);
         if (isPlayerInRange && Input.GetKeyDown(KeyCode.F))
         {
             Debug.Log("F key pressed and player is in range.");
             if (dialogueManager != null && dialogueComponent != null)
             {
-                // 대화 시작
-                dialogueManager.StartDialogue(dialogueComponent); // 0은 예시로 첫 번째 대화 컨테이너를 사용
+
+
+                if (DC.isSpriteChange)
+                {
+                    DC.SpriteChange();
+                    DC.isSpriteChange = false;
+                    DC.isCPMove = true;
+                    return;
+                }
+
+                if (DC.isCPMove && this.gameObject.tag != "vent")
+                {
+                    DC.CamPlayerMove();
+                    return;
+                }
+
+                if(DC.isCPMove && this.gameObject.tag == "vent" && GameObject.FindWithTag("Player").transform.GetChild(0).name == "Taipan(Clone)")
+                {
+                    DC.CamPlayerMove();
+                    return;
+                }
+
+                dialogueManager.StartDialogue(dialogueComponent);
+                return;
+
             }
-            else
-            {
-                Debug.LogError("DialogueManager or DialogueComponent is null.");
-            }
+
         }
 
         // 상호작용 이미지 위치 업데이트
@@ -50,7 +73,7 @@ public class TalkInteract : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
@@ -76,4 +99,3 @@ public class TalkInteract : MonoBehaviour
         }
     }
 }
-

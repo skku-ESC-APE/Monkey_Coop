@@ -16,11 +16,18 @@ public class DialogueComponent : MonoBehaviour
     public float playery;
     public float Camx;
     public float Camy;
+    public CameraController CamCon;
+
+    [SerializeField]
+    public Vector2 CCC;
+    [SerializeField]
+    public Vector2 CCMS;
 
     private void Start()
     {
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
         DM = GameObject.Find("DialogueManager").GetComponent<DialogueManager>();
+        CamCon = GameObject.FindWithTag("MainCamera").GetComponent<CameraController>();
     }
 
     public DialogueContainer GetContainer()
@@ -51,24 +58,16 @@ public class DialogueComponent : MonoBehaviour
 
         if (this.gameObject.name == "vent")
         {
-            if (this.gameObject.GetComponent<SpriteRenderer>().sprite == newSprite)
-            {
-                isCPMove = true;
-            }
-
-        }
-
-        if (this.gameObject.name == "door")
-        {
-            if (GM.amugena)
+            if (this.gameObject.GetComponent<SpriteRenderer>().sprite == newSprite && GameObject.FindWithTag("Player").transform.GetChild(0).name != "Taipan(Clone)")
             {
                 return dialogueContainers[1];
             }
-            else
+            else if(!GM.SnakeMetamorphose)
             {
                 return dialogueContainers[0];
             }
         }
+
 
         if (this.gameObject.name == "CAGE")
         {
@@ -82,7 +81,7 @@ public class DialogueComponent : MonoBehaviour
             }
         }
 
-        if (this.gameObject.name == "door (1)")
+        if (this.gameObject.name == "desk 1")
         {
             if (GM.amugena)
             {
@@ -94,7 +93,7 @@ public class DialogueComponent : MonoBehaviour
             }
         }
 
-        if (this.gameObject.name == "door (2)")
+        if (this.gameObject.name == "locker (1)")
         {
             if (GM.amugena)
             {
@@ -106,7 +105,7 @@ public class DialogueComponent : MonoBehaviour
             }
         }
 
-        if (this.gameObject.name == "door (3)")
+        if (this.gameObject.name == "Locker1")
         {
             if (GM.amugena)
             {
@@ -117,6 +116,141 @@ public class DialogueComponent : MonoBehaviour
                 return dialogueContainers[0];
             }
         }
+
+        if (this.gameObject.name == "Locker2")
+        {
+            if (GM.amugena)
+            {
+                return dialogueContainers[1];
+            }
+            else
+            {
+                return dialogueContainers[0];
+            }
+        }
+
+        if (this.gameObject.name == "glass_empty")
+        {
+            if (GM.amugena)
+            {
+                return dialogueContainers[1];
+            }
+            else
+            {
+                return dialogueContainers[0];
+            }
+        }
+
+        if (this.gameObject.name == "yang")
+        {
+            if (GM.amugena)
+            {
+                return dialogueContainers[1];
+            }
+            else
+            {
+                return dialogueContainers[0];
+            }
+        }
+
+
+        if (this.gameObject.name == "door1")
+        {
+            if (isSpriteChange)
+            {
+                return null;
+            }
+
+            if (isCPMove)
+            {
+                return null;
+            }
+
+            return null;
+        }
+
+        if (this.gameObject.name == "door2")
+        {
+            if (isSpriteChange)
+            {
+                return null;
+            }
+
+            if (isCPMove)
+            {
+                return null;
+            }
+
+            return null;
+        }
+
+        if (this.gameObject.name == "door3")
+        {
+            if (GM.amugena)
+            {
+                return dialogueContainers[1];
+            }
+            else
+            {
+                return dialogueContainers[0];
+            }
+        }
+
+        if (this.gameObject.name == "door4")
+        {
+            if (isSpriteChange)
+            {
+                return null;
+            }
+
+            if (isCPMove)
+            {
+                return null;
+            }
+
+            return null;
+        }
+
+        if (this.gameObject.name == "door5")
+        {
+            if (isSpriteChange)
+            {
+                return null;
+            }
+
+            if (isCPMove)
+            {
+                return null;
+            }
+
+            return null;
+        }
+
+        if (this.gameObject.name == "door6")
+        {
+            if (GM.amugena)
+            {
+                return dialogueContainers[1];
+            }
+            else
+            {
+                return dialogueContainers[0];
+            }
+        }
+
+        if (this.gameObject.name == "door7")
+        {
+            if (GM.amugena)
+            {
+                return dialogueContainers[1];
+            }
+            else
+            {
+                return dialogueContainers[0];
+            }
+        }
+
+
 
         if (this.gameObject.name == "book_nipper")
         {
@@ -175,9 +309,15 @@ public class DialogueComponent : MonoBehaviour
     }
     public void CamPlayerMove()
     {
-
+        GameObject.Find("Player").transform.position = new Vector3(playerx, playery, -5);
+        CamCon.center = CCC;
+        CamCon.mapSize = CCMS;
     }
 
-
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(CCC, CCMS * 2);
+    }
 
 }

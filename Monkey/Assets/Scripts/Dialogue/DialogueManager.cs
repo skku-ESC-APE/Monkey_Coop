@@ -51,11 +51,6 @@ public class DialogueManager : MonoBehaviour
 
     private void ShowNextLine()
     {
-        if (dialogueContainer == null || dialogueText == null || characterNameText == null)
-        {
-            Debug.LogError("One or more references are null.");
-            return;
-        }
 
         if (currentLineIndex < dialogueContainer.lines.Count)
         {
