@@ -17,6 +17,10 @@ public class Dragger : MonoBehaviour
 
     [SerializeField] private Sprite cctvDamagedSprite; // CCTV 1차 파괴 스프라이트
     [SerializeField] private Sprite cctvClearSprite;   // CCTV 2차 파괴 (clear 상태) 스프라이트
+    [SerializeField] private Vector3 damagedSpriteScale = Vector3.one; // 1차 파괴 스프라이트의 크기
+    [SerializeField] private Vector3 clearSpriteScale = Vector3.one; // 2차 파괴 (clear 상태) 스프라이트의 크기
+    [SerializeField] private Vector3 damagedSpritePosition = Vector3.zero; // 1차 파괴 스프라이트의 위치
+    [SerializeField] private Vector3 clearSpritePosition = Vector3.zero; // 2차 파괴 (clear 상태) 스프라이트의 위치
 
     void Awake()
     {
@@ -169,11 +173,15 @@ public class Dragger : MonoBehaviour
                         if (cctvSpriteRenderer.sprite != cctvDamagedSprite && cctvDamagedSprite != null)
                         {
                             cctvSpriteRenderer.sprite = cctvDamagedSprite;
+                            _currentHoverObject.transform.localScale = damagedSpriteScale;
+                            _currentHoverObject.transform.localPosition = damagedSpritePosition;
                             Debug.Log("CCTV가 1차 파괴되었습니다.");
                         }
                         else if (cctvSpriteRenderer.sprite == cctvDamagedSprite && cctvClearSprite != null)
                         {
                             cctvSpriteRenderer.sprite = cctvClearSprite;
+                            _currentHoverObject.transform.localScale = clearSpriteScale;
+                            _currentHoverObject.transform.localPosition = clearSpritePosition;
                             Debug.Log("CCTV가 2차 파괴(클리어 상태)되었습니다.");
                         }
                     }

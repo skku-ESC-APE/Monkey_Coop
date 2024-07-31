@@ -352,7 +352,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.2385242, y: 0}
+  m_Offset: {x: -0.36862803, y: 0.043369293}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -363,7 +363,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4.8529515, y: 4.68}
+  m_Size: {x: 8.0622, y: 7.5423}
   m_EdgeRadius: 0
 --- !u!1 &473659626
 GameObject:
@@ -496,6 +496,10 @@ MonoBehaviour:
   clearUI: {fileID: 0}
   cctvDamagedSprite: {fileID: 21300000, guid: 22a51da690d690d4d852e5f306f7ce93, type: 3}
   cctvClearSprite: {fileID: 21300000, guid: 07d5ddbb4a010c046a5f2ddb10945cd0, type: 3}
+  damagedSpriteScale: {x: 1, y: 1, z: 1}
+  clearSpriteScale: {x: 0.7, y: 0.7, z: 1}
+  damagedSpritePosition: {x: 0, y: 0, z: 0}
+  clearSpritePosition: {x: 0, y: 3, z: 0}
 --- !u!61 &473659631
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -764,6 +768,10 @@ MonoBehaviour:
   clearUI: {fileID: 0}
   cctvDamagedSprite: {fileID: 21300000, guid: 22a51da690d690d4d852e5f306f7ce93, type: 3}
   cctvClearSprite: {fileID: 21300000, guid: 07d5ddbb4a010c046a5f2ddb10945cd0, type: 3}
+  damagedSpriteScale: {x: 1, y: 1, z: 1}
+  clearSpriteScale: {x: 0.7, y: 0.7, z: 1}
+  damagedSpritePosition: {x: 0, y: 0, z: 0}
+  clearSpritePosition: {x: 0, y: 3, z: 0}
 --- !u!61 &729875511
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -940,6 +948,10 @@ MonoBehaviour:
   clearUI: {fileID: 0}
   cctvDamagedSprite: {fileID: 21300000, guid: 22a51da690d690d4d852e5f306f7ce93, type: 3}
   cctvClearSprite: {fileID: 21300000, guid: 07d5ddbb4a010c046a5f2ddb10945cd0, type: 3}
+  damagedSpriteScale: {x: 1, y: 1, z: 1}
+  clearSpriteScale: {x: 0.7, y: 0.7, z: 1}
+  damagedSpritePosition: {x: 0, y: 0, z: 0}
+  clearSpritePosition: {x: 0, y: 3, z: 0}
 --- !u!61 &1114066565
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1116,6 +1128,10 @@ MonoBehaviour:
   clearUI: {fileID: 0}
   cctvDamagedSprite: {fileID: 21300000, guid: 22a51da690d690d4d852e5f306f7ce93, type: 3}
   cctvClearSprite: {fileID: 21300000, guid: 07d5ddbb4a010c046a5f2ddb10945cd0, type: 3}
+  damagedSpriteScale: {x: 1, y: 1, z: 1}
+  clearSpriteScale: {x: 0.7, y: 0.7, z: 1}
+  damagedSpritePosition: {x: 0, y: 0, z: 0}
+  clearSpritePosition: {x: 0, y: 3, z: 0}
 --- !u!61 &1158179002
 BoxCollider2D:
   m_ObjectHideFlags: 0
