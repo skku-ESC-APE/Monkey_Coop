@@ -82,6 +82,7 @@
     <Compile Include="Assets\Scripts\Scale\FillFood.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Dialogue\DialogueComponent.cs" />
+    <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\Dialogue\DialogueContainer.cs" />
     <Compile Include="Assets\Scripts\Dragger.cs" />
   </ItemGroup>

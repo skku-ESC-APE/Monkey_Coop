@@ -93,10 +93,24 @@ public class DialogueManager : MonoBehaviour
     {
         dialoguePanel.SetActive(false);
         Debug.Log("Dialogue ended.");
+
+        // 메모장 비활성화
+        if (this.gameObject.name == "memo" && dialogueContainer == GM.GetComponent<DialogueComponent>().dialogueContainers[1])
+        {
+            GameObject Memo = GameObject.Find("memo");
+            if (Memo != null)
+            {
+                Memo.SetActive(false);
+            }
+        }
+
+
+
+
+
         if (fadeManager != null)
         {
             fadeManager.LoadSceneWithFade("GameScene");
         }
     }
 }
-

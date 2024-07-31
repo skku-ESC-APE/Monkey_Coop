@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b25dc03589381946937c20fd126db42, type: 3}
   m_Name: Locker_BS
   m_EditorClassIdentifier: 
-  lines: []
+  lines:
+  - {fileID: 11400000, guid: f5c2b095b324fd6419006bbf19ea5bb7, type: 2}
+  - {fileID: 11400000, guid: 013cb6918e1357f4d924bf7fe309a028, type: 2}

@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Nipper Get
   m_EditorClassIdentifier: 
   lines:
+  - {fileID: 11400000, guid: 965d76da657961347b68b4d34fae364b, type: 2}
   - {fileID: 11400000, guid: 8f23d2dc3a8bd504891637254d406a0c, type: 2}
