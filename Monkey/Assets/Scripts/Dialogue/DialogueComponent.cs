@@ -52,7 +52,7 @@ public class DialogueComponent : MonoBehaviour
             }
         }
 
-        if (this.gameObject.name == "bookshelf")
+        if (this.gameObject.name == "CAGE")
         {
             if (GM.amugena)
             {
