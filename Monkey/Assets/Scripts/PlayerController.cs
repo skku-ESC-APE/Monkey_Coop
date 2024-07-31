@@ -10,17 +10,14 @@ public class PlayerController : MonoBehaviour
     private GameObject currentAnimal;
     private Animator animator;
 
-    // Å©±â Á¶Á¤ º¯¼ö
+    // í¬ê¸° ì¡°ì • ë³€ìˆ˜
     public Vector3 monkeyScale = new Vector3(1f, 1f, 1f);
     public Vector3 snakeScale = new Vector3(1f, 1f, 1f);
 
     void Start()
     {
-        // °ÔÀÓ ½ÃÀÛ ½Ã ¿ø¼şÀÌ·Î º¯½ÅÇÏ¸ç ÃÊ±â À§Ä¡ ¼³Á¤
-        TransformToMonkey();
-        // ÇÃ·¹ÀÌ¾î À§Ä¡¸¦ È­¸éÀÇ Áß¾ÓÀ¸·Î Á¶Á¤ (ÇÊ¿ä¿¡ µû¶ó ¼öÁ¤ °¡´É)
-        currentAnimal.transform.position = new Vector3(0, -5f, 0);
-        currentAnimal.transform.rotation = Quaternion.Euler(0, 180, 0);
+        TransformToMonkey(); // ì´ˆê¸° ìƒíƒœëŠ” ì›ìˆ­ì´
+        transform.position = new Vector3(0, 2.5f, 0); // ê²Œì„ ì‹œì‘ ì‹œ ìœ„ì¹˜ ì´ˆê¸°í™”(ì§ì ‘ ì§€ì •í•´ë‘ì…ˆã…‡ã…‡)
     }
 
     void Update()
@@ -36,18 +33,18 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             moveInput = -1;
-            // ¿ŞÂÊ ¹æÇâÀ¸·Î È¸Àü
+            // ì™¼ìª½ ë°©í–¥ìœ¼ë¡œ íšŒì „
             currentAnimal.transform.rotation = Quaternion.Euler(0, -90, 0);
         }
         else if (Input.GetKey(KeyCode.D))
         {
             moveInput = 1;
-            // ¿À¸¥ÂÊ ¹æÇâÀ¸·Î È¸Àü
+            // ì˜¤ë¥¸ìª½ ë°©í–¥ìœ¼ë¡œ íšŒì „
             currentAnimal.transform.rotation = Quaternion.Euler(0, 90, 0);
         }
 
         Vector3 move = new Vector3(moveInput * walkSpeed * Time.deltaTime, 0, 0);
-        currentAnimal.transform.position += move;
+        transform.position += move; // ë¹ˆ ì˜¤ë¸Œì íŠ¸ë¥¼ ì´ë™
 
         bool isWalking = moveInput != 0;
         animator.SetBool("isWalking", isWalking);
@@ -67,22 +64,22 @@ public class PlayerController : MonoBehaviour
 
     void TransformToMonkey()
     {
-        Vector3 currentPosition = currentAnimal != null ? currentAnimal.transform.position : new Vector3(0, 2.51f, 0);
+        Vector3 currentPosition = transform.position; // ë¹ˆ ì˜¤ë¸Œì íŠ¸ì˜ ìœ„ì¹˜ ê°€ì ¸ì˜¤ê¸°
         if (currentAnimal != null) Destroy(currentAnimal);
         currentAnimal = Instantiate(monkeyPrefab, currentPosition, Quaternion.identity);
-        currentAnimal.transform.localScale = monkeyScale; // ¿ø¼şÀÌ Å©±â Á¶Á¤
-        currentAnimal.transform.position = new Vector3(currentPosition.x, -5f, currentPosition.z); // ¿ø¼şÀÌ ³ôÀÌ ¼³Á¤
+        currentAnimal.transform.localScale = monkeyScale; // ì›ìˆ­ì´ í¬ê¸° ì¡°ì •
+        currentAnimal.transform.SetParent(transform); // ë¹ˆ ì˜¤ë¸Œì íŠ¸ì˜ ìì‹ìœ¼ë¡œ ì„¤ì •
         animator = currentAnimal.GetComponent<Animator>();
         ResetAnimatorParameters();
     }
 
     void TransformToSnake()
     {
-        Vector3 currentPosition = currentAnimal != null ? currentAnimal.transform.position : new Vector3(0, 2.0f, 0);
+        Vector3 currentPosition = transform.position; // ë¹ˆ ì˜¤ë¸Œì íŠ¸ì˜ ìœ„ì¹˜ ê°€ì ¸ì˜¤ê¸°
         if (currentAnimal != null) Destroy(currentAnimal);
         currentAnimal = Instantiate(snakePrefab, currentPosition, Quaternion.identity);
-        currentAnimal.transform.localScale = snakeScale; // ¹ì Å©±â Á¶Á¤
-        currentAnimal.transform.position = new Vector3(currentPosition.x, -6.5f, currentPosition.z); // ¹ì ³ôÀÌ ¼³Á¤
+        currentAnimal.transform.localScale = snakeScale; // ë±€ í¬ê¸° ì¡°ì •
+        currentAnimal.transform.SetParent(transform); // ë¹ˆ ì˜¤ë¸Œì íŠ¸ì˜ ìì‹ìœ¼ë¡œ ì„¤ì •
         animator = currentAnimal.GetComponent<Animator>();
         ResetAnimatorParameters();
     }
