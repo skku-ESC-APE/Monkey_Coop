@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Ground
   - Water
+  - Weight
+  - Wire
+  - Nippers
+  - hammerwrench
+  - CCTV
   layers:
   - Default
   - TransparentFX

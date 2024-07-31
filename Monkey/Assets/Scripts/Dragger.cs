@@ -15,6 +15,9 @@ public class Dragger : MonoBehaviour
 
     private string puzzleState = "incomplete"; // puzzle2 상태 관리
 
+    [SerializeField] private Sprite cctvDamagedSprite; // CCTV 1차 파괴 스프라이트
+    [SerializeField] private Sprite cctvClearSprite;   // CCTV 2차 파괴 (clear 상태) 스프라이트
+
     void Awake()
     {
         _cam = Camera.main;
@@ -53,6 +56,19 @@ public class Dragger : MonoBehaviour
         }
     }
 
+    void OnMouseUp()
+    {
+        if (puzzleState == "clear") return;
+
+        Debug.Log("OnMouseUp 호출됨");
+        if (_isDragging)
+        {
+            Interact();
+            ReturnToOriginalPosition();
+            StopDragging();
+        }
+    }
+
     void Update()
     {
         if (puzzleState == "clear") return;
@@ -62,19 +78,9 @@ public class Dragger : MonoBehaviour
             DragObject();
         }
 
-        if (Input.GetMouseButtonDown(1))
-        {
-            ReturnToOriginalPosition();
-        }
-
         if (_currentHoverObject != null)
         {
             Debug.Log("현재 호버 중인 오브젝트는: " + _currentHoverObject.name);
-        }
-
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            Interact();
         }
     }
 
@@ -93,13 +99,13 @@ public class Dragger : MonoBehaviour
         // 현재 호버 중인 오브젝트 초기화
         _currentHoverObject = null;
 
-        // 충돌하는 콜라이더 중 Wire 태그를 가진 오브젝트를 찾음
+        // 충돌하는 콜라이더 중 CCTV 태그를 가진 오브젝트를 찾음
         foreach (var hitCollider in hitColliders)
         {
-            if (hitCollider.CompareTag("Wire"))
+            if (hitCollider.CompareTag("CCTV"))
             {
                 _currentHoverObject = hitCollider.gameObject;
-                Debug.Log("Wire 태그 오브젝트와 충돌 중: " + _currentHoverObject.name);
+                Debug.Log(hitCollider.tag + " 태그 오브젝트와 충돌 중: " + _currentHoverObject.name);
                 break;
             }
         }
@@ -134,11 +140,10 @@ public class Dragger : MonoBehaviour
         }
     }
 
-    void ReturnToOriginalPosition()
+    public void ReturnToOriginalPosition()
     {
         Debug.Log("ReturnToOriginalPosition 호출됨");
         transform.position = _originalPosition;
-        StopDragging();
     }
 
     void DragObject()
@@ -147,31 +152,36 @@ public class Dragger : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, GetMousePos() + _dragOffset, _speed * Time.deltaTime);
     }
 
-    void Interact()
+    public void Interact()
     {
         Debug.Log("Interact 호출됨");
         if (_currentHoverObject != null)
         {
             Debug.Log("현재 호버 중인 오브젝트: " + _currentHoverObject.name);
-            if (_currentHoverObject.CompareTag("Wire"))
+
+            if (_currentHoverObject.CompareTag("CCTV"))
             {
-                Debug.Log("호버 중인 오브젝트는 Wire 태그를 가지고 있습니다.");
-                if (gameObject.CompareTag("Nippers"))
+                SpriteRenderer cctvSpriteRenderer = _currentHoverObject.GetComponent<SpriteRenderer>();
+                if (cctvSpriteRenderer != null)
                 {
-                    Debug.Log("현재 드래그 중인 오브젝트는 Nippers 태그를 가지고 있습니다.");
-                    Debug.Log("올바른 오브젝트입니다!");
-                    ClearPuzzle(); // puzzle2를 clear 상태로 변경
+                    if (gameObject.CompareTag("hammerwrench") && cctvSpriteRenderer.sprite != cctvClearSprite)
+                    {
+                        if (cctvSpriteRenderer.sprite != cctvDamagedSprite && cctvDamagedSprite != null)
+                        {
+                            cctvSpriteRenderer.sprite = cctvDamagedSprite;
+                            Debug.Log("CCTV가 1차 파괴되었습니다.");
+                        }
+                        else if (cctvSpriteRenderer.sprite == cctvDamagedSprite && cctvClearSprite != null)
+                        {
+                            cctvSpriteRenderer.sprite = cctvClearSprite;
+                            Debug.Log("CCTV가 2차 파괴(클리어 상태)되었습니다.");
+                        }
+                    }
+                    else if (gameObject.CompareTag("Nippers") && cctvSpriteRenderer.sprite == cctvClearSprite)
+                    {
+                        ClearPuzzle();
+                    }
                 }
-                else
-                {
-                    Debug.Log("현재 드래그 중인 오브젝트는 Nippers 태그를 가지고 있지 않습니다.");
-                    ReturnToOriginalPosition();
-                }
-            }
-            else
-            {
-                Debug.Log("호버 중인 오브젝트는 Wire 태그를 가지고 있지 않습니다.");
-                ReturnToOriginalPosition();
             }
         }
         else
@@ -189,38 +199,6 @@ public class Dragger : MonoBehaviour
         if (clearUI != null)
         {
             clearUI.SetActive(true); // Clear UI 활성화
-        }
-    }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (puzzleState == "clear") return;
-
-        Debug.Log("OnTriggerEnter2D 호출됨");
-        if (other.CompareTag("Wire"))
-        {
-            Debug.Log("Wire 태그 오브젝트와 충돌함");
-            _currentHoverObject = other.gameObject;
-        }
-        else
-        {
-            Debug.Log("충돌한 오브젝트는 Wire 태그를 가지고 있지 않습니다.");
-        }
-    }
-
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if (puzzleState == "clear") return;
-
-        Debug.Log("OnTriggerExit2D 호출됨");
-        if (other.CompareTag("Wire"))
-        {
-            Debug.Log("Wire 태그 오브젝트와 충돌 종료");
-            _currentHoverObject = null;
-        }
-        else
-        {
-            Debug.Log("충돌 종료된 오브젝트는 Wire 태그를 가지고 있지 않습니다.");
         }
     }
 
