@@ -25,6 +25,18 @@ public class DialogueComponent : MonoBehaviour
 
     public DialogueContainer GetContainer()
     {
+        if (this.gameObject.name == "memo")
+        {
+            if (GM.amugena)
+            {
+                return dialogueContainers[1];
+            }
+            else
+            {
+                return dialogueContainers[0];
+            }
+        }
+
         if (this.gameObject.name == "bookshelf")
         {
             if (GM.amugena)

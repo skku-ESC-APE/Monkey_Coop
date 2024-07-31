@@ -95,10 +95,10 @@ public class DialogueManager : MonoBehaviour
         Debug.Log("Dialogue ended.");
 
         // 메모장 비활성화
-        if (this.gameObject.name == "memo" && dialogueContainer == GM.GetComponent<DialogueComponent>().dialogueContainers[1])
+        if (dialogueContainer == GM.GetComponent<DialogueComponent>().dialogueContainers[0])
         {
             GameObject Memo = GameObject.Find("memo");
-            if (Memo != null)
+            if (Memo)
             {
                 Memo.SetActive(false);
             }
