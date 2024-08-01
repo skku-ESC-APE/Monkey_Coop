@@ -272,7 +272,7 @@ public class DialogueComponent : MonoBehaviour
 
         }
 
-        if (this.gameObject.name == "CCTV normal")
+        if (this.gameObject.name == "CCTV2")
         {
             if (isFirst == true)
             {

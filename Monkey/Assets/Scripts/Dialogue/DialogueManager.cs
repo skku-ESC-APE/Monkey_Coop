@@ -20,6 +20,7 @@ public class DialogueManager : MonoBehaviour
     GameObject Yang;
     CameraController CC;
     GameObject mainCamera;
+    GameObject CCTVnormal;
 
     private void Start()
     {
@@ -33,6 +34,8 @@ public class DialogueManager : MonoBehaviour
         Yang = GameObject.Find("Yang");
         CC = GameObject.FindWithTag("MainCamera").GetComponent<CameraController>();
         mainCamera = GameObject.FindWithTag("MainCamera");
+        CCTVnormal = GameObject.Find("CCTV normal");
+        CCTVnormal.SetActive(false);
     }
 
     private void Update()
@@ -126,7 +129,17 @@ public class DialogueManager : MonoBehaviour
 
         if (Glass)
         {
-            if (dialogueContainer == Glass.GetComponent<DialogueComponent>().dialogueContainers[2])
+            if (dialogueContainer == Glass.GetComponent<DialogueComponent>().dialogueContainers[0])
+            {
+                CCTVnormal.SetActive(true);
+            }
+
+            else if (dialogueContainer == Glass.GetComponent<DialogueComponent>().dialogueContainers[1])
+            {
+                CCTVnormal.SetActive(true);
+            }
+
+            else if (dialogueContainer == Glass.GetComponent<DialogueComponent>().dialogueContainers[2])
             {
                 GM.SnakeMetamorphose = true;
             }
@@ -141,6 +154,10 @@ public class DialogueManager : MonoBehaviour
                 
             }
         }
+
+       
+
+
 
 
 

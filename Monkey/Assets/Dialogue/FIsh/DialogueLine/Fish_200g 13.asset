@@ -15,4 +15,4 @@ MonoBehaviour:
   characterName: Player
   text: "\uB370\uC790\uBDF0\uAC00 \uB290\uAEF4\uC9C0\uB294 \uAC74 \uAE30\uBD84\uD0D3\uC77C\uAE4C.."
   characterImage1: {fileID: 0}
-  characterImage2: {fileID: 0}
+  characterImage2: {fileID: 21300000, guid: 7e2eb597661c4774cb00501093d5b50b, type: 3}

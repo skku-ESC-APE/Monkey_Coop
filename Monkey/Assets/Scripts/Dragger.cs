@@ -28,6 +28,9 @@ public class Dragger : MonoBehaviour
 
     CameraController cameraController;
 
+
+
+
     void Awake()
 
     {
@@ -213,6 +216,7 @@ public class Dragger : MonoBehaviour
         Debug.Log("모든 액션이 종료되었습니다. Puzzle2가 클리어되었습니다.");
         CC.enabled = true;
         puzzleState = "clear"; // puzzle2 상태를 clear로 변경
+
 
         
     }
