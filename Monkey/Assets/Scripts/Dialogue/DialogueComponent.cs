@@ -11,12 +11,21 @@ public class DialogueComponent : MonoBehaviour
     public List<DialogueContainer> dialogueContainers; // 대화 컨테이너 리스트
     public bool isSpriteChange = false;
     public bool isCPMove = false;
+    public bool isFirst = true;
     public Sprite newSprite;
     public float playerx;
     public float playery;
     public float Camx;
     public float Camy;
     public CameraController CamCon;
+    Dragger dragger;
+    Dragger ND;
+
+    public GameObject CCTV;
+    public GameObject Glass;
+    
+
+
 
     [SerializeField]
     public Vector2 CCC;
@@ -28,32 +37,21 @@ public class DialogueComponent : MonoBehaviour
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
         DM = GameObject.Find("DialogueManager").GetComponent<DialogueManager>();
         CamCon = GameObject.FindWithTag("MainCamera").GetComponent<CameraController>();
+        dragger = this.gameObject.GetComponent<Dragger>();
+        ND = GameObject.FindWithTag("Nippers").GetComponent<Dragger>();
+
     }
 
     public DialogueContainer GetContainer()
     {
         if (this.gameObject.name == "memo")
         {
-            if (GM.amugena)
-            {
-                return dialogueContainers[1];
-            }
-            else
-            {
-                return dialogueContainers[0];
-            }
+            return dialogueContainers[0];
         }
 
         if (this.gameObject.name == "bookshelf")
         {
-            if (GM.amugena)
-            {
-                return dialogueContainers[1];
-            }
-            else
-            {
-                return dialogueContainers[0];
-            }
+            return dialogueContainers[0];
         }
 
         if (this.gameObject.name == "vent")
@@ -71,86 +69,88 @@ public class DialogueComponent : MonoBehaviour
 
         if (this.gameObject.name == "CAGE")
         {
-            if (GM.amugena)
-            {
-                return dialogueContainers[1];
-            }
-            else
-            {
-                return dialogueContainers[0];
-            }
+
+            return dialogueContainers[0];
+
         }
 
         if (this.gameObject.name == "desk 1")
         {
-            if (GM.amugena)
-            {
-                return dialogueContainers[1];
-            }
-            else
-            {
-                return dialogueContainers[0];
-            }
+
+            return dialogueContainers[0];
+
         }
 
         if (this.gameObject.name == "locker (1)")
         {
-            if (GM.amugena)
-            {
-                return dialogueContainers[1];
-            }
-            else
-            {
-                return dialogueContainers[0];
-            }
+
+            return dialogueContainers[0];
+            
         }
 
         if (this.gameObject.name == "Locker1")
         {
-            if (GM.amugena)
-            {
-                return dialogueContainers[1];
-            }
-            else
-            {
-                return dialogueContainers[0];
-            }
+
+
+            return dialogueContainers[0];
+            
         }
 
         if (this.gameObject.name == "Locker2")
         {
-            if (GM.amugena)
+
+
+            return dialogueContainers[0];
+            
+        }
+
+        if (this.gameObject.name == "Locker3")
+        {
+
+                return dialogueContainers[0];
+
+        }
+
+
+        
+
+        if (this.gameObject.name == "Glass")
+        {
+            if (isFirst == true)
+            {
+                isFirst = false;
+                return dialogueContainers[0];
+                
+            }
+
+            else if (isFirst == false && ND.puzzleState != "clear")
             {
                 return dialogueContainers[1];
             }
-            else
+
+            else if (isFirst == false && ND.puzzleState == "clear")
             {
-                return dialogueContainers[0];
+                return dialogueContainers[2];
             }
+
+
+
+
         }
 
         if (this.gameObject.name == "glass_empty")
         {
-            if (GM.amugena)
-            {
-                return dialogueContainers[1];
-            }
-            else
-            {
-                return dialogueContainers[0];
-            }
+
+            return dialogueContainers[0];
+
         }
 
         if (this.gameObject.name == "yang")
         {
-            if (GM.amugena)
-            {
-                return dialogueContainers[1];
-            }
-            else
-            {
-                return dialogueContainers[0];
-            }
+
+            
+            return dialogueContainers[0];
+            
         }
 
 
@@ -186,14 +186,9 @@ public class DialogueComponent : MonoBehaviour
 
         if (this.gameObject.name == "door3")
         {
-            if (GM.amugena)
-            {
-                return dialogueContainers[1];
-            }
-            else
-            {
-                return dialogueContainers[0];
-            }
+
+            return dialogueContainers[0];
+            
         }
 
         if (this.gameObject.name == "door4")
@@ -228,75 +223,130 @@ public class DialogueComponent : MonoBehaviour
 
         if (this.gameObject.name == "door6")
         {
-            if (GM.amugena)
-            {
-                return dialogueContainers[1];
-            }
-            else
-            {
+
                 return dialogueContainers[0];
-            }
+            
         }
 
         if (this.gameObject.name == "door7")
         {
-            if (GM.amugena)
-            {
-                return dialogueContainers[1];
-            }
-            else
-            {
+
                 return dialogueContainers[0];
-            }
+            
         }
 
 
 
         if (this.gameObject.name == "book_nipper")
         {
-            if (GM.amugena)
-            {
-                return dialogueContainers[1];
-            }
-            else
-            {
+
                 return dialogueContainers[0];
-            }
+            
         }
 
         if (this.gameObject.name == "book_sissors")
         {
-            if (GM.amugena)
-            {
-                return dialogueContainers[1];
-            }
-            else
-            {
+
                 return dialogueContainers[0];
-            }
+            
         }
 
         if (this.gameObject.name == "book_wrench")
         {
-            if (GM.amugena)
-            {
-                return dialogueContainers[1];
-            }
-            else
-            {
+
                 return dialogueContainers[0];
-            }
+            
         }
 
         if (this.gameObject.name == "burlap_closed")
         {
-            if (GM.amugena)
+
+                return dialogueContainers[0];
+            
+        }
+
+        if (this.gameObject.name == "Yang")
+        {
+
+            return dialogueContainers[0];
+
+        }
+
+        if (this.gameObject.name == "CCTV normal")
+        {
+            if (isFirst == true)
+            {
+                isFirst = false;
+                return dialogueContainers[0];
+
+            }
+
+            else if (isFirst == false)
+            {
+                
+            }
+
+        }
+
+
+        if (this.gameObject.name == "Hammer")
+        {
+            SpriteRenderer spriteRenderer = CCTV.gameObject.GetComponent<SpriteRenderer>();
+            
+
+            if (spriteRenderer.sprite == dragger.cctvDamagedSprite)
+            {
+                return dialogueContainers[0];
+            }
+            if (spriteRenderer.sprite == dragger.cctvClearSprite)
             {
                 return dialogueContainers[1];
             }
-            else
+        }
+
+
+        if (this.gameObject.name == "Nippers")
+        {
+            SpriteRenderer spriteRenderer = CCTV.gameObject.GetComponent<SpriteRenderer>();
+
+
+            if (spriteRenderer.sprite == dragger.cctvDamagedSprite)
             {
                 return dialogueContainers[0];
+            }
+            if (spriteRenderer.sprite == dragger.cctvClearSprite)
+            {
+                return dialogueContainers[1];
+            }
+        }
+
+        if (this.gameObject.name == "Scissors")
+        {
+            SpriteRenderer spriteRenderer = CCTV.gameObject.GetComponent<SpriteRenderer>();
+
+
+            if (spriteRenderer.sprite == dragger.cctvDamagedSprite)
+            {
+                return dialogueContainers[0];
+            }
+            if (spriteRenderer.sprite == dragger.cctvClearSprite)
+            {
+                return dialogueContainers[1];
+            }
+        }
+
+        if (this.gameObject.name == "Wrench")
+        {
+            SpriteRenderer spriteRenderer = CCTV.gameObject.GetComponent<SpriteRenderer>();
+
+
+            if (spriteRenderer.sprite == dragger.cctvDamagedSprite)
+            {
+                return dialogueContainers[0];
+            }
+            if (spriteRenderer.sprite == dragger.cctvClearSprite)
+            {
+                return dialogueContainers[1];
             }
         }
 

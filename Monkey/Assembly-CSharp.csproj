@@ -60,10 +60,12 @@
     <Analyzer Include="C:\Program Files\Unity 2022.3.13f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Scale\ShowQ.cs" />
     <Compile Include="Assets\Quirky Series Ultimate\_Scripts\RotateOnScroll.cs" />
     <Compile Include="Assets\Scripts\Dialogue\DialogueManager.cs" />
     <Compile Include="Assets\Scripts\Dialogue\DialogueLine.cs" />
     <Compile Include="Assets\Scripts\TalkInteract.cs" />
+    <Compile Include="Assets\Scripts\Scale\FEED.cs" />
     <Compile Include="Assets\Scripts\Scale\MaxMinY.cs" />
     <Compile Include="Assets\Scripts\Scale\Compare.cs" />
     <Compile Include="Assets\Scripts\Scale\TrashFood.cs" />
@@ -73,10 +75,13 @@
     <Compile Include="Assets\Scripts\Scale\MaxVelocity.cs" />
     <Compile Include="Assets\Scripts\StartSceneManager.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Scale\GODOWN.cs" />
+    <Compile Include="Assets\Scripts\Scale\ResetButton.cs" />
     <Compile Include="Assets\Scripts\Scale\HandWeight.cs" />
     <Compile Include="Assets\Quirky Series Ultimate\_Scripts\QuirkySeriesDemo.cs" />
     <Compile Include="Assets\Scripts\InfoInteract.cs" />
     <Compile Include="Assets\Scripts\Scale\FIxPOS.cs" />
+    <Compile Include="Assets\Scripts\Scale\GOUP.cs" />
     <Compile Include="Assets\Scripts\DraggerManager.cs" />
     <Compile Include="Assets\Scripts\FadeManager.cs" />
     <Compile Include="Assets\Scripts\Scale\FillFood.cs" />

@@ -15,4 +15,4 @@ MonoBehaviour:
   characterName: Snake
   text: "\uC548 \uD1B5\uD558\uB2C8\uAE4C \uADF8\uB9CC \uD558\uB77C\u3131..!!"
   characterImage1: {fileID: 0}
-  characterImage2: {fileID: 0}
+  characterImage2: {fileID: 21300000, guid: ac1dc6f3a40d67746a675003a9bd6246, type: 3}

@@ -10,14 +10,24 @@ public class PlayerController : MonoBehaviour
     private GameObject currentAnimal;
     private Animator animator;
 
+    public Sprite MonkeySprite;
+    public Sprite SnakeSprite;
+
+    public float Snakeoffset;
+
+    GameManager GM;
+
+
     // 크기 조정 변수
     public Vector3 monkeyScale = new Vector3(1f, 1f, 1f);
     public Vector3 snakeScale = new Vector3(1f, 1f, 1f);
 
     void Start()
     {
+        this.gameObject.GetComponent<BoxCollider2D>().offset += new Vector2(0, Snakeoffset);
         TransformToMonkey(); // 초기 상태는 원숭이
-        transform.position = new Vector3(0, 2.5f, -5); // 게임 시작 시 위치 초기화(직접 지정해두셈ㅇㅇ)
+        GM = GameObject.Find("GameManager").GetComponent<GameManager>();
+
     }
 
     void Update()
@@ -56,7 +66,7 @@ public class PlayerController : MonoBehaviour
         {
             TransformToMonkey();
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        else if (Input.GetKeyDown(KeyCode.Alpha2) && GM.SnakeMetamorphose == true)
         {
             TransformToSnake();
         }
@@ -64,6 +74,12 @@ public class PlayerController : MonoBehaviour
 
     void TransformToMonkey()
     {
+        if (this.gameObject.GetComponent<SpriteRenderer>().sprite = SnakeSprite)
+        {
+            this.gameObject.GetComponent<BoxCollider2D>().offset += new Vector2(0, -Snakeoffset);
+        }
+        
+        this.gameObject.GetComponent<SpriteRenderer>().sprite = MonkeySprite;
         Vector3 currentPosition = transform.position; // 빈 오브젝트의 위치 가져오기
         if (currentAnimal != null) Destroy(currentAnimal);
         currentAnimal = Instantiate(monkeyPrefab, currentPosition, Quaternion.identity);
@@ -75,6 +91,12 @@ public class PlayerController : MonoBehaviour
 
     void TransformToSnake()
     {
+        if (this.gameObject.GetComponent<SpriteRenderer>().sprite = MonkeySprite)
+        {
+            this.gameObject.GetComponent<BoxCollider2D>().offset += new Vector2(0, Snakeoffset);
+        }
+        
+        this.gameObject.GetComponent<SpriteRenderer>().sprite = SnakeSprite;
         Vector3 currentPosition = transform.position; // 빈 오브젝트의 위치 가져오기
         if (currentAnimal != null) Destroy(currentAnimal);
         currentAnimal = Instantiate(snakePrefab, currentPosition, Quaternion.identity);

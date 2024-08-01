@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Sissors Get
   m_EditorClassIdentifier: 
   lines:
+  - {fileID: 11400000, guid: 957fa83c86df1b843ad049862e4bea34, type: 2}
   - {fileID: 11400000, guid: 89155380088dc5f43a337dcfcab8a32d, type: 2}

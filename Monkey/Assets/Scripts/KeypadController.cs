@@ -8,7 +8,7 @@ public class KeypadController : MonoBehaviour
     public TextMeshProUGUI inputField; // TextMeshProUGUI 텍스트
     public string correctAnswer = "56971"; // 정답
 
-    private string currentInput = "";
+    public string currentInput = "";
 
     void Start()
     {
@@ -58,6 +58,7 @@ public class KeypadController : MonoBehaviour
         if (currentInput == correctAnswer)
         {
             UnityEngine.Debug.Log("Correct!"); // UnityEngine.Debug 사용
+            PuzzleClear();
         }
         else
         {
@@ -79,5 +80,16 @@ public class KeypadController : MonoBehaviour
                 digitFields[i].text = "";
             }
         }
+    }
+
+    public void PuzzleClear()
+    {
+        GameObject CAGE = GameObject.Find("CAGE");
+        if (CAGE != null)
+        {
+            CAGE.SetActive(false);
+        }
+
+        this.gameObject.SetActive(false);
     }
 }

@@ -16,4 +16,4 @@ MonoBehaviour:
   text: "(\uD070 \uC18C\uB9AC\uB97C \uB0C8\uB2E4\uAC00\uB294 \uB9C8\uB140\uAC00 \uAE08\uBC29
     \uB0B4\uB824\uC62C\uC9C0\uB3C4 \uBAB0\uB77C..)"
   characterImage1: {fileID: 0}
-  characterImage2: {fileID: 0}
+  characterImage2: {fileID: 21300000, guid: ac1dc6f3a40d67746a675003a9bd6246, type: 3}

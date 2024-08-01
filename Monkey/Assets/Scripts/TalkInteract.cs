@@ -12,10 +12,14 @@ public class TalkInteract : MonoBehaviour
     private DialogueManager dialogueManager;
     private bool isPlayerInRange = false;
     DialogueComponent DC;
+    CameraController CC;
+    GameObject mainCamera;
 
     private void Start()
     {
         DC = GetComponent<DialogueComponent>();
+        CC = GameObject.FindWithTag("MainCamera").GetComponent<CameraController>();
+        mainCamera = GameObject.FindWithTag("MainCamera");
         dialogueManager = FindObjectOfType<DialogueManager>();
         if (dialogueManager == null)
         {
@@ -30,13 +34,18 @@ public class TalkInteract : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(GameObject.FindWithTag("Player").transform.GetChild(0).name);
         if (isPlayerInRange && Input.GetKeyDown(KeyCode.F))
         {
             Debug.Log("F key pressed and player is in range.");
             if (dialogueManager != null && dialogueComponent != null)
             {
-
+                if (this.gameObject.name == "CCTV normal")
+                {
+                    
+                    CC.enabled = false;
+                    mainCamera.transform.position = new Vector3(0f, 84f, -10f);
+                    return;
+                }
 
                 if (DC.isSpriteChange)
                 {

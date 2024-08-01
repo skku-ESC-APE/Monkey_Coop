@@ -11,19 +11,29 @@ public class Dragger : MonoBehaviour
     private Collider2D _collider;
     private Rigidbody2D _rigidbody;
     private GameObject _currentHoverObject;
-    [SerializeField] private GameObject clearUI; // Clear UI 오브젝트
+    CameraController CC;
 
-    private string puzzleState = "incomplete"; // puzzle2 상태 관리
 
-    [SerializeField] private Sprite cctvDamagedSprite; // CCTV 1차 파괴 스프라이트
-    [SerializeField] private Sprite cctvClearSprite;   // CCTV 2차 파괴 (clear 상태) 스프라이트
+    public string puzzleState = "incomplete"; // puzzle2 상태 관리
+
+    [SerializeField] public Sprite cctvDamagedSprite; // CCTV 1차 파괴 스프라이트
+    [SerializeField] public Sprite cctvClearSprite;   // CCTV 2차 파괴 (clear 상태) 스프라이트
     [SerializeField] private Vector3 damagedSpriteScale = Vector3.one; // 1차 파괴 스프라이트의 크기
     [SerializeField] private Vector3 clearSpriteScale = Vector3.one; // 2차 파괴 (clear 상태) 스프라이트의 크기
     [SerializeField] private Vector3 damagedSpritePosition = Vector3.zero; // 1차 파괴 스프라이트의 위치
     [SerializeField] private Vector3 clearSpritePosition = Vector3.zero; // 2차 파괴 (clear 상태) 스프라이트의 위치
 
+    DialogueManager DM;
+    DialogueComponent DC;
+
+    CameraController cameraController;
+
     void Awake()
+
     {
+        DM = GameObject.Find("DialogueManager").GetComponent<DialogueManager>();
+        DC = this.GetComponent<DialogueComponent>();
+        CC = GameObject.FindWithTag("MainCamera").GetComponent<CameraController>();
         _cam = Camera.main;
         _originalPosition = transform.position;
         _collider = GetComponent<Collider2D>();
@@ -43,10 +53,7 @@ public class Dragger : MonoBehaviour
             Debug.LogWarning("Rigidbody2D가 없어서 추가했습니다.");
         }
 
-        if (clearUI != null)
-        {
-            clearUI.SetActive(false); // Clear UI를 비활성화
-        }
+
     }
 
     void OnMouseDown()
@@ -67,8 +74,10 @@ public class Dragger : MonoBehaviour
         Debug.Log("OnMouseUp 호출됨");
         if (_isDragging)
         {
+            
             Interact();
             ReturnToOriginalPosition();
+
             StopDragging();
         }
     }
@@ -166,6 +175,7 @@ public class Dragger : MonoBehaviour
             if (_currentHoverObject.CompareTag("CCTV"))
             {
                 SpriteRenderer cctvSpriteRenderer = _currentHoverObject.GetComponent<SpriteRenderer>();
+                DM.StartDialogue(DC);
                 if (cctvSpriteRenderer != null)
                 {
                     if (gameObject.CompareTag("hammerwrench") && cctvSpriteRenderer.sprite != cctvClearSprite)
@@ -201,13 +211,10 @@ public class Dragger : MonoBehaviour
     void ClearPuzzle()
     {
         Debug.Log("모든 액션이 종료되었습니다. Puzzle2가 클리어되었습니다.");
+        CC.enabled = true;
         puzzleState = "clear"; // puzzle2 상태를 clear로 변경
-        Time.timeScale = 0; // 게임 시간 멈춤
 
-        if (clearUI != null)
-        {
-            clearUI.SetActive(true); // Clear UI 활성화
-        }
+        
     }
 
     Vector3 GetMousePos()

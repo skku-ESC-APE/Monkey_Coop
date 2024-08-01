@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: CCTV_break 1 nipperscissor
   m_EditorClassIdentifier: 
   lines:
-  - {fileID: 11400000, guid: e0f7ee440004ac743984219ea8e04a56, type: 2}
+  - {fileID: 11400000, guid: 28cee429adca8314595a9985c47682bf, type: 2}

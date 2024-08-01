@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: CCTV_bf_1break 1
   m_EditorClassIdentifier: 
   characterName: Player
-  text: "\uC5ED\uC2DC \uBC15\uC0B4\uB0BC \uB54C\uB294 \uB9DD\uCE58\uACA0\uC9C0?"
+  text: "\uBA38\uAC00\uB9AC \uB300\uB77C."
   characterImage1: {fileID: 0}
-  characterImage2: {fileID: 0}
+  characterImage2: {fileID: 21300000, guid: ac1dc6f3a40d67746a675003a9bd6246, type: 3}
