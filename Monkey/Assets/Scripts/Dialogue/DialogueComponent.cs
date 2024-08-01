@@ -350,6 +350,24 @@ public class DialogueComponent : MonoBehaviour
             }
         }
 
+        if (this.gameObject.name == "tilefish")
+        {
+            if (GM.foodQuantity == 0 )
+            {
+                return dialogueContainers[0];
+            }
+
+            else if (GM.foodQuantity == 5)
+            {
+                return dialogueContainers[1];
+            }
+            else
+            {
+                return dialogueContainers[2];
+            }
+
+        }
+
         return null;
     }
 
